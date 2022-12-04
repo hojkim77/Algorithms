@@ -16,7 +16,6 @@ for i in range(m): # adj 작성(1 2가 들어오면 1, 2와 2, 1에 1)
 
 visited[a] = 1
 def dfs(v):
-    #print(v, end = ' ')
 
     for w in range(n+1):
         if adj[v][w] == 1 and visited[w] == 0:

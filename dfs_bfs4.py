@@ -2,7 +2,7 @@
 from collections import deque
 
 n = int(input())
-adj = [list(input()) for _ in range(n)] #간선 입력값
+adj = [list(input()) for _ in range(n)] 
 s_arr = [0]
 s = 0 #단지 인덱스
 for i in range(n): #리스트 정수화
