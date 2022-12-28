@@ -14,43 +14,45 @@ def tomato():
                 if (adj[a][b][c] == 0):
                     z += 1
                 if (adj[a][b][c] == 1):
-                    queue.append([a, b, c, 0])
-    print(adj)
+                    queue.append((a, b, c, 0))
     if z == 0:
         if len(queue) > 0: # 1, -1만 있을 때
             return 0
         return 0 # -1만 있을 때
+    if z == i * j * k:
+        return -1
+    if z > 0 and not queue:
+        return -1
     while(z > 0):
         if (queue):
-            cur = queue.popleft()
-            l, m, n ,d = cur[0], cur[1], cur[2], cur[3]
+            l, m, n ,d = queue.popleft()
             if l - 1 >= 0 and adj[l - 1][m][n] == 0:
                 adj[l - 1][m][n] = d + 1
                 z -= 1
-                queue.append([l - 1, m, n, d + 1])
+                queue.append((l - 1, m, n, d + 1))
             if l + 1 < k and adj[l + 1][m][n] == 0:
                 adj[l + 1][m][n] = d + 1
                 z -= 1
-                queue.append([l + 1, m, n, d + 1])
+                queue.append((l + 1, m, n, d + 1))
             if m - 1 >= 0 and adj[l][m - 1][n] == 0:
                 adj[l][m - 1][n] = d + 1
                 z -= 1
-                queue.append([l, m - 1, n, d + 1])
+                queue.append((l, m - 1, n, d + 1))
             if m + 1 < j and adj[l][m + 1][n] == 0:
                 adj[l][m + 1][n] = d + 1
                 z -= 1
-                queue.append([l, m + 1, n, d + 1])
+                queue.append((l, m + 1, n, d + 1))
             if n - 1 >= 0 and adj[l][m][n - 1] == 0:
                 adj[l][m][n - 1] = d + 1
                 z -= 1
-                queue.append([l, m, n - 1, d + 1])
+                queue.append((l, m, n - 1, d + 1))
             if n + 1 < i and adj[l][m][n + 1] == 0:
                 adj[l][m][n + 1] = d + 1
                 z -= 1
-                queue.append([l, m, n + 1, d + 1])
-        print(adj)
-    if z > 0 and not(queue):
-        return -1
+                queue.append((l, m, n + 1, d + 1))
+        else:
+            return -1
+    
     return max(max(max(adj)))
 
 print(tomato())

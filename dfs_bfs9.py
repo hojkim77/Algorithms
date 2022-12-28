@@ -1,25 +1,41 @@
+# 메모리 초과?
 from collections import deque
-F, S, G, U, D = map(int, input().split())
-visited = [0 for _ in range(F + 1)] # not index. thus, + 1
-tup = []
-def bfs():
-    queue = deque()
-    queue.append(S)
-    while queue:
-        s = queue.popleft()
-        if s == G:
-            return visited[s]
-        if U == 0: #U or D is 0 > cnt + 1 error
-            arr = [s - D]
-        elif D == 0:
-            arr = [s + U]
-        else:
-            arr = [s + U, s - D]
-        for i in arr: # +U or -D case
-            if i > 0 and i <= F and not visited[i]:
-                visited[i] = visited[s] + 1
-                queue.append(i)
-                
-    return("use the stairs")
 
-print(bfs())
+N = int(input())
+adj = [list(map(int,input().split())) for _ in range(N)]
+mmax = max(max(adj))
+ans = [0 for i in range(mmax + 1)]
+dx, dy = [1, 0, -1, 0], [0, 1, 0, -1]
+
+def solution():
+    for k in range(0, mmax + 1):
+        queue = deque()
+        visited = [[0 for i in range(N)] for i in range(N)]
+        cnt = 0
+        for i in range(N): #물에 잠기는 영역
+            for j in range(N):
+                if adj[i][j] <= k:
+                    visited[i][j] = 1
+       #print(visited)
+                
+                    
+        for i in range(N): # 유효한 영역
+            for j in range(N):
+                if not visited[i][j] :
+                    cnt += 1
+                    queue.append((i,j)) # bfs
+                    visited[i][j] = 1
+                    while queue:
+                        #print(queue)
+                        x, y = queue.popleft()
+                        for a in range(4):
+                            nx, ny = x + dx[a], y + dy[a]
+                            if 0 <= nx < N and 0 <= ny < N and not visited[nx][ny]:
+                                queue.append((nx,ny))
+                                visited[nx][ny] = 1
+        #print(cnt)
+                                
+        ans[k] = cnt
+    return max(ans)
+        
+print(solution())
