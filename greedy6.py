@@ -13,11 +13,13 @@ def solution(routes):
             print(end)
             answer += 1
             flag = 0
-        if i > 0:
-            if routes[i][0] > routes[i - 1][1]:
-                if flag == 1:
-                    answer += 1
-                flag = 1
+        
+        elif routes[i][0] <= end:  
+            if i > 0:
+                if routes[i][0] > routes[i - 1][1] and routes[i][1] < end:
+                    if flag == 1:
+                        answer += 1
+                    flag = 1
     return answer    
 
-print(solution([[-100,100],[50,170],[150,200],[-50,-10],[10,20],[30,40]]))
+print(solution([[-20,15], [-20,-15], [-14,-5], [-18,-13], [-5,-3]]))
