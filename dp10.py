@@ -7,5 +7,5 @@ for i in range(n):
         if arr[j] < arr[i]:
             dp[i] = max(dp[i], dp[j] + 1)
             
-print(dp)
+            
 print(max(dp))
