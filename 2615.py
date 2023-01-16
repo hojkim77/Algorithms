@@ -1,5 +1,5 @@
 arr = [list(map(int, input().split())) for _ in range(19)]
-dxy = ((1,1), (0, 1), (1, 0), (1, -1))
+dxy = ((1,1), (0, 1), (1, 0), (1, -1)) # 확인해야할 4 방향
 
 def check(i, j, n): ## ver.2
     #print('s ', i, j)
@@ -12,13 +12,12 @@ def check(i, j, n): ## ver.2
             x += d[1]
             y += d[0]
             if cnt == 5:
-                if (0<=x<19 and 0<=y<19 and arr[y][x] == n):
+                if (0<=x<19 and 0<=y<19 and arr[y][x] == n): # 6목 방지
                     break
-                if (0<=i - d[0]<19 and 0<=j - d[1]<19 and arr[i - d[0]][j - d[1]] == n):
+                if (0<=i - d[0]<19 and 0<=j - d[1]<19 and arr[i - d[0]][j - d[1]] == n): # 6목 방지
                         break
                 else:
-                    print(i + 1, j + 1)
-                    if d == (1, -1):
+                    if d == (1, -1): # 가장 왼쪽 알을 출력해야해서 예외 처리
                         print(arr[i][j])
                         print(i + 5, j - 3)
                     else:
