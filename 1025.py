@@ -1,5 +1,5 @@
 N, M = map(int, input().split())
-arr = [list(str(input())) for _ in range(N)]
+arr = [list(str(input())) for _ in range(N)] # 공백없어서 일부러 str로 받음
 def issquare(n):
 	return int(n ** 0.5) ** 2 == n
 
