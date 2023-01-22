@@ -11,7 +11,6 @@ def quad(n, x, y):
         for i in range(n):
             for j in range(n):
                 sum += int(arr[x + i][y + j])
-        #print(n, sum)
         if sum == 0:
             answer += '0'
         elif sum == (n) *(n):
@@ -23,5 +22,7 @@ def quad(n, x, y):
             quad(n // 2, x + n // 2, y)
             quad(n // 2, x + n // 2, y + n // 2)
             answer += ")"
+            
 quad(n, 0, 0)
+
 print(answer)
