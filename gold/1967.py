@@ -1,10 +1,10 @@
 from collections import deque
 # 트리 완성
 N = int(input())
-if N == 1:
+if N == 1: # node가 1개일 때 지름은 0
     print(0)
     exit(0)
-adj = [[] for _ in range(N + 1)]
+adj = [[] for _ in range(N + 1)] # adj의 index가 노드의 번호
 maxn = 0
 for _ in range(N - 1): 
     n, m, x = map(int, input().split())
