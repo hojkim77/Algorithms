@@ -21,7 +21,7 @@ while(left <= right):
     for tree in trees:
         if tree - mid > 0:
             total += tree - mid
-        if total > m:
+        if total > m: # 이 때를 멈춰줘야했다,,
             break
     print(total)
     if total >= m:
