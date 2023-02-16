@@ -10,10 +10,9 @@ def recursive(x, y, N):
             graph[x + 2][y + i] = '*'
     else:
         nextN = N // 2
-        recursive(x, y, nextN)
-        recursive(x + nextN, y - nextN, nextN)
-        recursive(x + nextN, y + nextN, nextN)
-
+        recursive(x, y, nextN) # 상단 큰 삼각형
+        recursive(x + nextN, y - nextN, nextN) # 왼쪽 큰 삼각형
+        recursive(x + nextN, y + nextN, nextN) # 오른쪽 큰 삼각형
 
 recursive(0, N - 1, N)
 for i in graph:
