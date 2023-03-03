@@ -9,7 +9,7 @@ def travel(start, cost):
         mincost = min(mincost, cost + arr[start][0])
         return
 
-    for i in range(N): # 시작인 0부터 재귀(backtracking)을 통해 탐색한다.
+    for i in range(N): # 시작인 0부터 재귀(backtracking)을 통해 완전탐색한다.
         if not visited[i] and arr[start][i]:
             visited[i] = 1
             travel(i,cost + arr[start][i])

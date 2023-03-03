@@ -33,5 +33,3 @@ while(left <= right):
         
 
 print(maxlen)
-
-# 36퍼 시간초과
