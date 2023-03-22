@@ -1,6 +1,4 @@
 # 간선이 들어오는 케이스
-from collections import deque
-
 n = int(input())
 a, b = map(int, input().split())
 m = int(input())
@@ -20,8 +18,6 @@ def dfs(v):
     for w in range(n+1):
         if adj[v][w] == 1 and visited[w] == 0:
             visited[w] = visited[v] + 1
-            '''if w == b:
-                return visited[w]'''
             dfs(w)
     
     if visited[b]:
