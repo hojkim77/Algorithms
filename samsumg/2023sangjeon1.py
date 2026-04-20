@@ -49,7 +49,7 @@ def bomb(attacker, target, attackValue, turn):
         if matrix[row][colmn] < 0:
             matrix[row][colmn] = DESTROIED
     attackedTurn[attacker[0]][attacker[1]] = turn
-
+    
 def layzer(attacker, path, target, attackValue, turn):
     global matrix
     for p in path:
@@ -100,7 +100,6 @@ def selectTarget(turn):
                 candidate.append([n, m])
 
     if len(candidate) > 1:
-        print('target!!!', candidate, turn)
         tmpCandidate = []
         minTurn = K + 1
         for c in candidate:
@@ -122,15 +121,12 @@ def selectTarget(turn):
     
     if len(candidate) > 1:
         candidate.sort(key=lambda x: (x[1]))
-        print('!!!', candidate, turn)
     
     target = candidate[0]
 
     return target
 
 def selectAttacker(turn):
-    for a in attackTurn:
-        print(a)
     candidate = []
     minValue = 100000
     for n in range(N):
@@ -144,7 +140,6 @@ def selectAttacker(turn):
                 candidate.append([n, m])
     
     if len(candidate) > 1:
-        print('attacker!!!', candidate, turn)
         tmpCandidate = []
         maxTurn = 0
         for c in candidate:
@@ -166,7 +161,6 @@ def selectAttacker(turn):
 
     if len(candidate) > 1:
         candidate.sort(key=lambda x: (-x[1]))
-        print('!!!', candidate, turn)
 
     
     attacker = candidate[0]
@@ -182,10 +176,6 @@ def solution(K):
             break
         attacker = selectAttacker(turn)
         target = selectTarget(turn)
-        print(attacker, target)
-        for m in matrix:
-            print(m)
-        print()
         attack(attacker, target, turn)
         revalidate(turn)
         
